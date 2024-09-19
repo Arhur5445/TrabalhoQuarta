@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Curso</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const curso = params.get('curso');
+
+            const detalhes = {
+                javascript: {
+                    titulo: "Curso de JavaScript",
+                    descricao: "Aprenda a programar com JavaScript, uma das linguagens mais populares do mundo.",
+                    instrutor: "Jalin Rabei",
+                    preco: "R$ 200,00",
+                    imagem: "/images/javascript.png"
+                },
+                python: {
+                    titulo: "Curso de Python",
+                    descricao: "Descubra o poder do Python, a melhor linguagem já feita.",
+                    instrutor: "Cezar Oliveira",
+                    preco: "R$ 250,00",
+                    imagem: "/images/python.png"
+                },
+                "html-css": {
+                    titulo: "Curso de HTML e CSS",
+                    descricao: "Domine o desenvolvimento web com HTML e CSS.",
+                    instrutor: "Aquino Rego",
+                    preco: "R$ 150,00",
+                    imagem: "/images/html-css.png"
+                }
+            };
+
+            // Usar o curso selecionado para buscar os detalhes
+            const cursoInfo = detalhes[curso.toLowerCase()];
+            if (cursoInfo) {
+                document.getElementById("curso-titulo").innerText = cursoInfo.titulo;
+                document.getElementById("curso-descricao").innerText = cursoInfo.descricao;
+                document.getElementById("curso-instrutor").innerText = `Instrutor: ${cursoInfo.instrutor}`;
+                document.getElementById("curso-preco").innerText = `Preço: ${cursoInfo.preco}`;
+                document.getElementById("curso-imagem").src = cursoInfo.imagem;
+            } else {
+                document.getElementById("curso-titulo").innerText = "Curso não encontrado.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Detalhes do Curso</h1>
+    </header>
+
+    <main>
+        <section class="curso-detalhes">
+            <h2 id="curso-titulo"></h2>
+            <img id="curso-imagem" src="" alt="Curso">
+            <p id="curso-descricao"></p>
+            <p id="curso-instrutor"></p>
+            <p id="curso-preco"></p>
+            <a href="inscricao.html" class="btn">Inscreva-se Agora</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Curso de Programação Online. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
